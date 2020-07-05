@@ -12,24 +12,29 @@ public class KillboxBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
+
+        //Metodo que verifica se o jogador colidiu com a Killbox, se sim chama o método ResetGame
         if(collision2D.tag == "Player")
         {
-            collision2D.transform.position = GameObject.Find("SpawnPoint").transform.position;
             player = collision2D.gameObject;
+            player.SetActive(false);
             Invoke("ResetGame", 0.5f);
         }
     }
 
     GameObject GetGameOverMenu()
     {
+        //Retorna o menu de Game Over
         return GameObject.Find("PlayerUI").transform.Find("GameOverMenu").gameObject;
     }
 
     public void Continue()
     {
+        //Continua o jogo e coloca o jogador no ultimo checkpoint que ele passou
         var gOver = GetGameOverMenu();
         gOver.SetActive(false);
         player.SetActive(true);
+        ControllerJogo.LastCheckpoint();
     }
 
     /// <summary>
@@ -69,6 +74,8 @@ public class KillboxBehavior : MonoBehaviour
         }
 
     }
+
+    //Método que gerencia o Cooldown dos Ads mostrados
     public IEnumerator ShowContinue(Button botaoContinue)
     {
         var btnText = botaoContinue.GetComponentInChildren<Text>();

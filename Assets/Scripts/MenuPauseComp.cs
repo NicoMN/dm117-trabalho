@@ -19,6 +19,7 @@ public class MenuPauseComp : MonoBehaviour
         Pause(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ControllerJogo.gems = 0;
+        ControllerJogo.checkpoint = GameObject.FindGameObjectWithTag("Spawn").transform.position;
     }
 
     /// <summary>

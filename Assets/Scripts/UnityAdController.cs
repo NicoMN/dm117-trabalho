@@ -39,7 +39,6 @@ public class UnityAdController : MonoBehaviour
                 resultCallback = TratarMostrarResultado
             };
 
-            print("Got here");
         Advertisement.Show(opcoes);
         }
 #endif

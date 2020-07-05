@@ -7,6 +7,7 @@ TagManager:
   - Collectible
   - Enemy
   - Spawn
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
